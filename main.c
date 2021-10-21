@@ -4,7 +4,7 @@
 
 int main()
 {
-    Queue* queue = create();
+    /*Queue* queue = create();
     int x = 3;
     int y = 1;
     int* a = &x;
@@ -23,5 +23,25 @@ int main()
     printf("next b: %d\n", *((int*)next(queue)));
 
     printf("dequeue b: %d\n", *((int*)dequeue(queue)));
+    return 0;*/
+
+    Queue* q = create();
+    int nums[] = { 1, 2, 3, 4, 5, 6 };
+
+    for (int i = 0; i < 6; i++)
+    {
+        enqueue(q, nums + i);
+    }
+
+    void* marker = next(q);
+
+    do
+    {
+        void* d = next(q);
+        printf("%d ", *(int*)d);
+        enqueue(q, dequeue(q));
+    } while (marker != next(q));
+
     return 0;
+
 }
